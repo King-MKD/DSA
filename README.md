@@ -111,3 +111,72 @@ class Solution {
         return count;
     }
 }
+
+
+
+Q7.Valid Pallindrome
+
+class Solution {
+    public boolean isPalindrome(String s) {
+        s=s.toLowerCase();
+        String b="";
+        String c="";
+        for(int i=0;i<s.length();i++)
+        {
+            char ch=s.charAt(i);
+            if(Character.isLetter(ch) || Character.isDigit(ch))
+            {
+                b=b+ch;
+            }
+        }
+        for(int i=b.length()-1;i>=0;i--)
+        {
+            c=c+b.charAt(i);
+        }
+        if(c.equals(b))
+        return true;
+        else
+        return false;
+    }
+}
+
+
+Q7. Longest Common Prefix
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) return "";
+
+        String prefix = strs[0];
+
+        for (int i = 1; i < strs.length; i++) {
+            while (!strs[i].startsWith(prefix)) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }
+        }
+
+        return prefix;
+    }
+}
+
+
+
+
+Q8. Reverse Words in a String
+
+class Solution {
+    public String reverseWords(String s) {
+        // Remove leading/trailing spaces and split by one or more spaces
+        String[] words = s.trim().split("\\s+");
+        StringBuilder sb = new StringBuilder();
+
+        // Append words in reverse order
+        for (int i = words.length - 1; i >= 0; i--) {
+            sb.append(words[i]);
+            if (i > 0) sb.append(" ");
+        }
+
+        return sb.toString();
+    }
+}
