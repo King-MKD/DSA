@@ -1,0 +1,42 @@
+if(head==null || head.next==null)
+return true;
+
+// find middle
+
+ListNode slow=head,fast=head;
+while(fast==null || fast.next==null)
+{
+slow=slow.next;
+fast=fast.next.next;
+}
+
+// Reverse second half
+
+ListNode secondHalf=reverse(slow);
+
+// Compare both halves
+ListNode firstHalf=head;
+ListNode secondhalf1=secondHalf;
+while(secondHalf!=null)
+{
+if(firstHalf.val!=secondHalf.val)
+return false;
+firstHalf=firstHalf.next;
+secondHalf=secondHalf.next;
+}
+
+// reverse secondHalf
+
+private ListNode reverse(ListNode head)
+{
+ListNode prev=null;
+ListNode current=head;
+while(current!=null)
+{
+ListNode next=current.next;
+current.next=prev;
+prev=current;
+current=next;
+}
+return prev;
+}
